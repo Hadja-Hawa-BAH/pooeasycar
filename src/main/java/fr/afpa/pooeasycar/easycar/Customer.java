@@ -67,13 +67,14 @@ public class Customer {
     //Fonction tostring
     @Override
     public String toString() {
-        return "\nCustomer [\nNom=" + getFirstName() + ", \nPrenom=" + getLastName() + ", \nAdresse=" + getAddress() + ", \nVille=" + getCity()
-                + ", \nCode Postal=" + getPostalCode() + "]";
+        return "\nCustomer [\nNom= " + getFirstName() + ", \nPrenom= " + getLastName() + ", \nAdresse= " + getAddress() + ", \nVille= " + getCity()
+                + ", \nCode Postal= " + getPostalCode() + "]";
     }
 
     //Fonction pour calculer le total d'argent dépensé
     public double totalMoneySpent(){
-        double istotal = 0;
+        double istotal = 0.0;
+
         for(Reservation reservation: reservations){
             istotal += reservation.totalPrice();
         }

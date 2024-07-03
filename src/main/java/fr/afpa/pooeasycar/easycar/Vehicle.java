@@ -42,6 +42,10 @@ public abstract class Vehicle {
         return pricePerDay;
     }
     
+    public ArrayList<Reservation> getReservations(){
+        return reservations;
+    }
+    
     //Setters
     public void setBrand(String brand) {
         this.brand = brand;
@@ -63,9 +67,13 @@ public abstract class Vehicle {
         this.pricePerDay = pricePerDay;
     }
 
+    public void setReservations(ArrayList<Reservation> reservations){
+        this.reservations = reservations;
+    }
+
     //Fonction tostring
     public String toString(){
-        return "Véhicule  {"
+        return "\nVéhicule  {"
         + "\nMarque: " + getBrand()
         + "\nModèle: " + getModel()
         + "\nCouleur: " + getModel()
@@ -74,6 +82,7 @@ public abstract class Vehicle {
         + "}";
     }
 
+    
     
     
 
