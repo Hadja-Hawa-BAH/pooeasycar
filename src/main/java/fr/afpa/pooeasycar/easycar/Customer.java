@@ -1,28 +1,30 @@
 package fr.afpa.pooeasycar.easycar;
 
+import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Customer {
+public class Customer implements Comparable<Customer>, Serializable {
 
-    //Attributs
+    // Attributs
     private String firstName;
     private String lastName;
     private String address;
     private String city;
     private String postalCode;
-    private ArrayList<Reservation> reservations =  new ArrayList<Reservation>();
+    private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 
-    //Constructeur
+    // Constructeur
     public Customer(String firstName, String lastName, String address, String city, String postalCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.postalCode = postalCode;
-            
+
     }
 
-    //Getters
+    // Getters
     public String getFirstName() {
         return firstName;
     }
@@ -43,7 +45,7 @@ public class Customer {
         return postalCode;
     }
 
-    //Setters
+    // Setters
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -63,55 +65,57 @@ public class Customer {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
-    
-    //Fonction tostring
+
+    // Fonction tostring
     @Override
     public String toString() {
-        return "\nCustomer [\nNom= " + getFirstName() + ", \nPrenom= " + getLastName() + ", \nAdresse= " + getAddress() + ", \nVille= " + getCity()
+        return "\nCustomer [\nNom= " + getFirstName() + ", \nPrenom= " + getLastName() + ", \nAdresse= " + getAddress()
+                + ", \nVille= " + getCity()
                 + ", \nCode Postal= " + getPostalCode() + "]";
     }
 
-    //Fonction pour calculer le total d'argent dépensé
-    public double totalMoneySpent(){
+    // Fonction pour calculer le total d'argent dépensé
+    public double totalMoneySpent() {
         double istotal = 0.0;
 
-        for(Reservation reservation: reservations){
+        for (Reservation reservation : reservations) {
             istotal += reservation.totalPrice();
         }
         return istotal;
     }
 
-    //Fonction pour ajouter une reservation au client
-    public void addReservation(Reservation reservation){
+    // Fonction pour ajouter une reservation au client
+    public void addReservation(Reservation reservation) {
 
-        //Vérifier si la réservation existe
-        if (reservations.contains(reservation)){
-       
-            //Ajouter une réservation 
+        // Vérifier si la réservation existe
+        if (!reservations.contains(reservation)) {
+
+            // Ajouter une réservation
             reservations.add(reservation);
         }
     }
 
-    //Fonction pour supprimer une reservation
-    public boolean removeReservation(Reservation reservation){
-       if (reservations.contains(reservation)){
-        reservations.remove(reservation);
-        return true;
+    // Fonction pour supprimer une reservation
+    public boolean removeReservation(Reservation reservation) {
+        if (reservations.contains(reservation)) {
+            reservations.remove(reservation);
+            return true;
 
-       } else {
-        return false;
-       } 
+        } else {
+            return false;
+        }
+    }
+
+    // Implementation de la méthode pour comparer le client qui a plus dépensé
+    @Override
+    public int compareTo(Customer other) {
+        Customer customer = (Customer) other;
+        return Double.compare(this.totalMoneySpent(), other.totalMoneySpent());
+
     }
 
     
-
-    
-
-    
-
-    
-
-
-
     
 }
+
+

@@ -48,8 +48,8 @@ public class Reservation {
     // Fonction tostring
     @Override
     public String toString() {
-        return "\nReservation [\nDate de début=" + startDate + ", Date de fin=" + endDate + ", Payé=" + paid
-                + ", Vehicule="
+        return "\nReservation [\nDate de début= " + startDate + ", \nDate de fin= " + endDate + ", \nPayé= " + paid
+                + ", \nVehicule= "
                 + vehicle + "]";
     }
 
