@@ -1,10 +1,10 @@
 package fr.afpa.pooeasycar.easycar;
 
-import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Customer implements Comparable<Customer>, Serializable {
+    //private static final long serialVersionUID = 1L;
 
     // Attributs
     private String firstName;
@@ -21,7 +21,6 @@ public class Customer implements Comparable<Customer>, Serializable {
         this.address = address;
         this.city = city;
         this.postalCode = postalCode;
-
     }
 
     // Getters
@@ -109,13 +108,8 @@ public class Customer implements Comparable<Customer>, Serializable {
     // Implementation de la méthode pour comparer le client qui a plus dépensé
     @Override
     public int compareTo(Customer other) {
-        Customer customer = (Customer) other;
         return Double.compare(this.totalMoneySpent(), other.totalMoneySpent());
-
     }
-
-    
-    
 }
 
 

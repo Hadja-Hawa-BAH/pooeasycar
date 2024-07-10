@@ -1,16 +1,17 @@
 package fr.afpa.pooeasycar.easycar;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Serializable {
     //Attributs
     private String brand;
     private String model;
     private String color;
     private LocalDate buyingDate;
     private double pricePerDay;
-    private ArrayList<Reservation> reservations = new ArrayList<>();
+    private transient ArrayList<Reservation> reservations = new ArrayList<>();
 
     //Constructeurs
     protected Vehicle(String brand, String model, String color, LocalDate buyingDate, double pricePerDay) {
